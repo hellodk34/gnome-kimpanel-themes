@@ -1,0 +1,87 @@
+/* Sea Salt Blue (海盐蓝) — light theme for kimpanel
+ *
+ * 冷调浅灰蓝底 + 海盐蓝高亮，清爽干净，适合白天使用。
+ * 安装：./install.sh sea-salt-blue
+ */
+
+/* 让 BoxPointer 的箭头和外壳完全透明，只保留内容卡片 */
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  -arrow-background-color: transparent;
+  -arrow-border-color: transparent;
+  -arrow-border-width: 0px;
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-menu.kimpanel-popup-boxpointer {
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* 候选框主体 */
+.popup-menu-content.kimpanel-popup-content {
+  background-color: #f5f8fc;
+  border: 1px solid #d8e2ef;
+  border-radius: 10px;
+  box-shadow: 0 3px 16px rgba(40, 70, 110, 0.10);
+  padding: 5px 5px;
+  margin: 0px;
+}
+
+/* 预编辑、辅助码等文字 */
+.kimpanel-label {
+  font-family: "Sans";
+  font-weight: normal;
+  color: #2c3a4a;
+  padding: 0px;
+}
+
+.kimpanel-label:not(.kimpanel-candidate-item) {
+  padding: 4px 9px;
+  color: #8494a8;
+}
+
+/* 候选项 */
+.kimpanel-candidate-item {
+  cursor: pointer;
+  transition-duration: 0ms;
+  border-radius: 7px;
+  margin: 1px 0px;
+  padding: 4px 11px !important;
+  color: #2c3a4a;
+}
+
+/* 鼠标悬停 */
+.kimpanel-candidate-item:hover {
+  background-color: rgba(63, 111, 168, 0.09);
+}
+
+/* 当前选中项 */
+.kimpanel-candidate-item:active {
+  background-color: #3a6ea5;
+  color: #ffffff;
+  border: 0px;
+  box-shadow: none;
+}
+
+/* 选中项 + 鼠标悬停 */
+.kimpanel-candidate-item:active:hover {
+  background-color: #4579b1;
+  color: #ffffff;
+}
+
+.minwidth-zero {
+  min-width: 0;
+}
+
+.icon-disable {
+  color: rgba(132, 148, 168, 0.5);
+}

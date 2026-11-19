@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kimpanel 主题预览</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --page-bg: #0e1116;
+    --page-card: #171b22;
+    --page-border: #2a303a;
+    --page-text: #e7edf5;
+    --page-muted: #8b97a8;
+    --font: "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 40px 24px 56px;
+    background: radial-gradient(circle at 20% 0%, #1b2230 0%, var(--page-bg) 55%);
+    color: var(--page-text);
+    font-family: var(--font);
+    line-height: 1.6;
+  }
+
+  header {
+    max-width: 1180px;
+    margin: 0 auto 30px;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle {
+    margin: 0;
+    color: var(--page-muted);
+    font-size: 14px;
+  }
+
+  .grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--page-card);
+    border: 1px solid var(--page-border);
+    border-radius: 16px;
+    padding: 22px 22px 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .card h2 span {
+    color: var(--page-muted);
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 6px;
+  }
+
+  .desc {
+    margin: 2px 0 16px;
+    font-size: 13px;
+    color: var(--page-muted);
+  }
+
+  /* ---- 候选框模拟 ---- */
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 286px;
+    border-radius: 12px;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.014) 0 8px, transparent 8px 16px),
+      #0b0e13;
+    border: 1px solid #232a34;
+  }
+
+  .candidate {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+    min-width: 236px;
+    transform: translateY(-2px);
+  }
+
+  .candidate .aux {
+    padding: 4px 9px;
+    font-size: 12px;
+  }
+
+  .candidate .preedit {
+    padding: 2px 9px 4px;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+  }
+
+  .candidate ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .candidate li {
+    margin: 1px 0;
+    padding: 4px 11px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .candidate li .idx {
+    display: inline-block;
+    width: 18px;
+    opacity: 0.55;
+    font-size: 13px;
+  }
+
+  /* ---- 烛光春色 ---- */
+  .candle .candidate {
+    background: #fbfcf9;
+    border: 1px solid #dce5d8;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 2px 12px rgba(64, 116, 52, 0.08);
+  }
+  .candle .aux { color: #888888; }
+  .candle .preedit { color: #3a3a3a; }
+  .candle li { color: #3a3a3a; border-radius: 6px; padding: 4px 10px; }
+  .candle li:hover { background: rgba(64, 116, 52, 0.08); }
+  .candle li.active { background: #407434; color: #ffffff; }
+  .candle li.active:hover { background: #4a853d; }
+  .candle li.active .idx { opacity: 0.8; }
+
+  /* ---- 午夜青岚 ---- */
+  .teal .candidate {
+    background: #171c24;
+    border: 1px solid #2b3444;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  }
+  .teal .aux { color: #8492a6; }
+  .teal .preedit { color: #dfe7f3; }
+  .teal li { color: #dfe7f3; }
+  .teal li:hover { background: rgba(45, 212, 191, 0.12); }
+  .teal li.active { background: #0f766e; color: #f0fdfa; }
+  .teal li.active:hover { background: #12897f; }
+  .teal li.active .idx { opacity: 0.8; }
+
+  /* ---- 暖砂陶土 ---- */
+  .terracotta .candidate {
+    background: #fdf8f2;
+    border: 1px solid #ecd9c6;
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(122, 62, 32, 0.10);
+  }
+  .terracotta .aux { color: #a08d7e; }
+  .terracotta .preedit { color: #3b2f28; }
+  .terracotta li { color: #3b2f28; }
+  .terracotta li:hover { background: rgba(184, 83, 47, 0.09); }
+  .terracotta li.active { background: #b2532f; color: #fff8f3; }
+  .terracotta li.active:hover { background: #c25e37; }
+  .terracotta li.active .idx { opacity: 0.8; }
+
+  /* ---- 海盐蓝 ---- */
+  .sea .candidate {
+    background: #f5f8fc;
+    border: 1px solid #d8e2ef;
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(40, 70, 110, 0.10);
+  }
+  .sea .aux { color: #8494a8; }
+  .sea .preedit { color: #2c3a4a; }
+  .sea li { color: #2c3a4a; }
+  .sea li:hover { background: rgba(63, 111, 168, 0.09); }
+  .sea li.active { background: #3a6ea5; color: #ffffff; }
+  .sea li.active:hover { background: #4579b1; }
+  .sea li.active .idx { opacity: 0.8; }
+
+  /* ---- 色板 ---- */
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 12px;
+    margin-top: 16px;
+  }
+
+  .swatch {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--page-muted);
+  }
+
+  .swatch i {
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: inline-block;
+  }
+
+  code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 12.5px;
+    background: #10141a;
+    border: 1px solid var(--page-border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    color: #c8d4e4;
+  }
+
+  .usage {
+    max-width: 1180px;
+    margin: 26px auto 0;
+    color: var(--page-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .usage code { color: #d7e2f0; }
+</style>
+</head>
+<!-- 配色需与 themes/*.css 保持同步 -->
+<body>
+
+<header>
+  <h1>kimpanel 候选框主题预览</h1>
+  <p class="subtitle">网页近似效果，用于快速比较配色；可移动鼠标悬停、点击候选词体验高亮。实际圆角、阴影与字体由 GNOME Shell 渲染。</p>
+</header>
+
+<main class="grid">
+
+  <!-- 烛光春色 -->
+  <section class="card candle">
+    <h2>烛光春色 <span>Candlelight Spring · 浅色 · 默认</span></h2>
+    <p class="desc">暖白底 + 绿色高亮，温和自然。</p>
+
+    <div class="stage">
+      <div class="candidate">
+        <div class="aux">拼音</div>
+        <div class="preedit">ni hao</div>
+        <ul>
+          <li class="active"><span class="idx">1.</span>你好</li>
+          <li><span class="idx">2.</span>拟好</li>
+          <li><span class="idx">3.</span>你</li>
+          <li><span class="idx">4.</span>尼</li>
+          <li><span class="idx">5.</span>泥</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <span class="swatch"><i style="background:#fbfcf9"></i>背景 #fbfcf9</span>
+      <span class="swatch"><i style="background:#dce5d8"></i>边框 #dce5d8</span>
+      <span class="swatch"><i style="background:#3a3a3a"></i>文字 #3a3a3a</span>
+      <span class="swatch"><i style="background:#407434"></i>选中 #407434</span>
+      <span class="swatch"><i style="background:#4a853d"></i>选中悬停 #4a853d</span>
+    </div>
+  </section>
+
+  <!-- 午夜青岚 -->
+  <section class="card teal">
+    <h2>午夜青岚 <span>Midnight Teal · 深色</span></h2>
+    <p class="desc">深蓝灰底 + 青绿高亮，夜间输入不刺眼。</p>
+
+    <div class="stage">
+      <div class="candidate">
+        <div class="aux">拼音</div>
+        <div class="preedit">ni hao</div>
+        <ul>
+          <li class="active"><span class="idx">1.</span>你好</li>
+          <li><span class="idx">2.</span>拟好</li>
+          <li><span class="idx">3.</span>你</li>
+          <li><span class="idx">4.</span>尼</li>
+          <li><span class="idx">5.</span>泥</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <span class="swatch"><i style="background:#171c24"></i>背景 #171c24</span>
+      <span class="swatch"><i style="background:#2b3444"></i>边框 #2b3444</span>
+      <span class="swatch"><i style="background:#dfe7f3"></i>文字 #dfe7f3</span>
+      <span class="swatch"><i style="background:#0f766e"></i>选中 #0f766e</span>
+      <span class="swatch"><i style="background:#12897f"></i>选中悬停 #12897f</span>
+    </div>
+  </section>
+
+  <!-- 暖砂陶土 -->
+  <section class="card terracotta">
+    <h2>暖砂陶土 <span>Warm Terracotta · 浅色</span></h2>
+    <p class="desc">暖米白底 + 陶土橙高亮，白天阅读柔和。</p>
+
+    <div class="stage">
+      <div class="candidate">
+        <div class="aux">拼音</div>
+        <div class="preedit">ni hao</div>
+        <ul>
+          <li class="active"><span class="idx">1.</span>你好</li>
+          <li><span class="idx">2.</span>拟好</li>
+          <li><span class="idx">3.</span>你</li>
+          <li><span class="idx">4.</span>尼</li>
+          <li><span class="idx">5.</span>泥</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <span class="swatch"><i style="background:#fdf8f2"></i>背景 #fdf8f2</span>
+      <span class="swatch"><i style="background:#ecd9c6"></i>边框 #ecd9c6</span>
+      <span class="swatch"><i style="background:#3b2f28"></i>文字 #3b2f28</span>
+      <span class="swatch"><i style="background:#b2532f"></i>选中 #b2532f</span>
+      <span class="swatch"><i style="background:#c25e37"></i>选中悬停 #c25e37</span>
+    </div>
+  </section>
+
+  <!-- 海盐蓝 -->
+  <section class="card sea">
+    <h2>海盐蓝 <span>Sea Salt Blue · 浅色</span></h2>
+    <p class="desc">冷调浅灰蓝底 + 海盐蓝高亮，清爽干净。</p>
+
+    <div class="stage">
+      <div class="candidate">
+        <div class="aux">拼音</div>
+        <div class="preedit">ni hao</div>
+        <ul>
+          <li class="active"><span class="idx">1.</span>你好</li>
+          <li><span class="idx">2.</span>拟好</li>
+          <li><span class="idx">3.</span>你</li>
+          <li><span class="idx">4.</span>尼</li>
+          <li><span class="idx">5.</span>泥</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <span class="swatch"><i style="background:#f5f8fc"></i>背景 #f5f8fc</span>
+      <span class="swatch"><i style="background:#d8e2ef"></i>边框 #d8e2ef</span>
+      <span class="swatch"><i style="background:#2c3a4a"></i>文字 #2c3a4a</span>
+      <span class="swatch"><i style="background:#3a6ea5"></i>选中 #3a6ea5</span>
+      <span class="swatch"><i style="background:#4579b1"></i>选中悬停 #4579b1</span>
+    </div>
+  </section>
+
+</main>
+
+<p class="usage">
+  切换主题：<code>./install.sh &lt;主题名&gt;</code>
+  &nbsp;·&nbsp; 查看全部：<code>./install.sh list</code>
+  <br>
+  可选：<code>candlelight-spring</code> · <code>midnight-teal</code> ·
+  <code>warm-terracotta</code> · <code>sea-salt-blue</code>
+</p>
+
+<script>
+  // 点击候选词时移动当前选中项，模拟 kimpanel 的选中效果
+  document.querySelectorAll('.candidate ul').forEach((list) => {
+    list.addEventListener('click', (event) => {
+      const item = event.target.closest('li');
+      if (!item || !list.contains(item)) return;
+      list.querySelectorAll('li').forEach((li) => li.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+/* Warm Terracotta (暖砂陶土) — light theme for kimpanel
+ *
+ * 暖米色底 + 陶土橙高亮，柔和不刺眼，适合白天使用。
+ * 安装：./install.sh warm-terracotta
+ */
+
+/* 让 BoxPointer 的箭头和外壳完全透明，只保留内容卡片 */
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  -arrow-background-color: transparent;
+  -arrow-border-color: transparent;
+  -arrow-border-width: 0px;
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-menu.kimpanel-popup-boxpointer {
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* 候选框主体 */
+.popup-menu-content.kimpanel-popup-content {
+  background-color: #fdf8f2;
+  border: 1px solid #ecd9c6;
+  border-radius: 10px;
+  box-shadow: 0 3px 16px rgba(122, 62, 32, 0.10);
+  padding: 5px 5px;
+  margin: 0px;
+}
+
+/* 预编辑、辅助码等文字 */
+.kimpanel-label {
+  font-family: "Sans";
+  font-weight: normal;
+  color: #3b2f28;
+  padding: 0px;
+}
+
+.kimpanel-label:not(.kimpanel-candidate-item) {
+  padding: 4px 9px;
+  color: #a08d7e;
+}
+
+/* 候选项 */
+.kimpanel-candidate-item {
+  cursor: pointer;
+  transition-duration: 0ms;
+  border-radius: 7px;
+  margin: 1px 0px;
+  padding: 4px 11px !important;
+  color: #3b2f28;
+}
+
+/* 鼠标悬停 */
+.kimpanel-candidate-item:hover {
+  background-color: rgba(184, 83, 47, 0.09);
+}
+
+/* 当前选中项 */
+.kimpanel-candidate-item:active {
+  background-color: #b2532f;
+  color: #fff8f3;
+  border: 0px;
+  box-shadow: none;
+}
+
+/* 选中项 + 鼠标悬停 */
+.kimpanel-candidate-item:active:hover {
+  background-color: #c25e37;
+  color: #fff8f3;
+}
+
+.minwidth-zero {
+  min-width: 0;
+}
+
+.icon-disable {
+  color: rgba(160, 141, 126, 0.5);
+}

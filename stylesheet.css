@@ -1,0 +1,80 @@
+/* Candlelight Spring (烛光春色) — light theme for kimpanel
+ *
+ * 暖白底 + 绿色高亮，即仓库原有的默认主题。
+ * 安装：./install.sh candlelight-spring
+ */
+
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  -arrow-background-color: transparent;
+  -arrow-border-color: transparent;
+  -arrow-border-width: 0px;
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-menu.kimpanel-popup-boxpointer {
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-menu-content.kimpanel-popup-content {
+  background-color: #fbfcf9;
+  border: 1px solid #dce5d8;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(64, 116, 52, 0.08);
+  padding: 4px 4px;
+  margin: 0px;
+}
+
+.kimpanel-label {
+  font-family: "Sans";
+  font-weight: normal;
+  color: #3a3a3a;
+  padding: 0px;
+}
+
+.kimpanel-label:not(.kimpanel-candidate-item) {
+  padding: 4px 8px;
+  color: #888888;
+}
+
+.kimpanel-candidate-item {
+  cursor: pointer;
+  transition-duration: 0ms;
+  border-radius: 6px;
+  margin: 1px 0px;
+  padding: 4px 10px !important;
+  color: #3a3a3a;
+}
+
+.kimpanel-candidate-item:hover {
+  background-color: rgba(64, 116, 52, 0.08);
+}
+
+.kimpanel-candidate-item:active {
+  background-color: #407434;
+  color: #ffffff;
+  border: 0px;
+  box-shadow: none;
+}
+
+.kimpanel-candidate-item:active:hover {
+  background-color: #4a853d;
+  color: #ffffff;
+}
+
+.minwidth-zero {
+  min-width: 0;
+}
+
+.icon-disable {
+  color: rgba(150, 150, 150, 0.5);
+}

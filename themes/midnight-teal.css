@@ -1,0 +1,87 @@
+/* Midnight Teal (午夜青岚) — dark theme for kimpanel
+ *
+ * 深色底 + 青绿色高亮，适合夜间或长时间输入。
+ * 安装：./install.sh midnight-teal
+ */
+
+/* 让 BoxPointer 的箭头和外壳完全透明，只保留内容卡片 */
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  -arrow-background-color: transparent;
+  -arrow-border-color: transparent;
+  -arrow-border-width: 0px;
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-menu.kimpanel-popup-boxpointer {
+  background-color: transparent;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* 候选框主体 */
+.popup-menu-content.kimpanel-popup-content {
+  background-color: #171c24;
+  border: 1px solid #2b3444;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  padding: 5px 5px;
+  margin: 0px;
+}
+
+/* 预编辑、辅助码等文字 */
+.kimpanel-label {
+  font-family: "Sans";
+  font-weight: normal;
+  color: #dfe7f3;
+  padding: 0px;
+}
+
+.kimpanel-label:not(.kimpanel-candidate-item) {
+  padding: 4px 9px;
+  color: #8492a6;
+}
+
+/* 候选项 */
+.kimpanel-candidate-item {
+  cursor: pointer;
+  transition-duration: 0ms;
+  border-radius: 7px;
+  margin: 1px 0px;
+  padding: 4px 11px !important;
+  color: #dfe7f3;
+}
+
+/* 鼠标悬停 */
+.kimpanel-candidate-item:hover {
+  background-color: rgba(45, 212, 191, 0.12);
+}
+
+/* 当前选中项 */
+.kimpanel-candidate-item:active {
+  background-color: #0f766e;
+  color: #f0fdfa;
+  border: 0px;
+  box-shadow: none;
+}
+
+/* 选中项 + 鼠标悬停 */
+.kimpanel-candidate-item:active:hover {
+  background-color: #12897f;
+  color: #f0fdfa;
+}
+
+.minwidth-zero {
+  min-width: 0;
+}
+
+.icon-disable {
+  color: rgba(150, 160, 175, 0.45);
+}
